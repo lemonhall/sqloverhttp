@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import org.apache.calcite.linq4j.Enumerator;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class HttpRowEnumerator<E> implements Enumerator<E> {
@@ -60,18 +61,20 @@ public class HttpRowEnumerator<E> implements Enumerator<E> {
             JsonObject item = dataArray.get(i).getAsJsonObject();
             //取得这一行里的所有key
             Set<String> colKeySet = item.keySet();
-            Object[] row;
+            List<String>  row = new LinkedList<String>();
             //取得这个key组合下的所有的值
             for (String keyName : colKeySet) {
                 String value = item.get(keyName).getAsString();
                 System.out.println("row value:"+value);
+                row.add(value);
             }
+            bufferedRecords.add((E) row);
         }
-        bufferedRecords.add((E) new Object[]{"001","余柠"});
-        bufferedRecords.add((E) new Object[]{"002","小倩"});
-        bufferedRecords.add((E) new Object[]{"003","宁采臣"});
-        bufferedRecords.add((E) new Object[]{"004","马道士"});
-        bufferedRecords.add((E) new Object[]{"005","土匪甲"});
+//        bufferedRecords.add((E) new Object[]{"001","余柠"});
+//        bufferedRecords.add((E) new Object[]{"002","小倩"});
+//        bufferedRecords.add((E) new Object[]{"003","宁采臣"});
+//        bufferedRecords.add((E) new Object[]{"004","马道士"});
+//        bufferedRecords.add((E) new Object[]{"005","土匪甲"});
     }
 
     @Override
