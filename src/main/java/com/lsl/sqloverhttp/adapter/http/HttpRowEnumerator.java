@@ -1,17 +1,23 @@
 package com.lsl.sqloverhttp.adapter.http;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.apache.calcite.linq4j.Enumerator;
 
 import java.util.LinkedList;
+import java.util.Set;
 
 public class HttpRowEnumerator<E> implements Enumerator<E> {
     //runtime
     //新建一个整形的链表先用来模拟数据
     private final LinkedList<E> bufferedRecords = new LinkedList<E>();
     private E curRecord;
-    public  HttpRowEnumerator(){
-        pullRecords();
+    private JsonArray dataArray;
+
+    public HttpRowEnumerator(JsonArray dataArray) {
+        pullRecords(dataArray);
     }
+
     //这个是返回当前行的一个对象数组的函数
     //正确的写法应该有行的对象转换过程
     //return rowConverter.toRow(curRecord);
@@ -48,7 +54,19 @@ public class HttpRowEnumerator<E> implements Enumerator<E> {
 
     //相当于是从数据源当中获取数据的过程，这个从http的角度来说
     //其实可以看成读取整个json的数组到内存里并初始化的过程，这相当于读取了整个表
-    private void pullRecords() {
+    private void pullRecords(JsonArray dataArray) {
+        for(int i=0;i<dataArray.size();i++) {
+            //取一个元素出来
+            JsonObject item = dataArray.get(i).getAsJsonObject();
+            //取得这一行里的所有key
+            Set<String> colKeySet = item.keySet();
+            Object[] row;
+            //取得这个key组合下的所有的值
+            for (String keyName : colKeySet) {
+                String value = item.get(keyName).getAsString();
+                System.out.println("row value:"+value);
+            }
+        }
         bufferedRecords.add((E) new Object[]{"001","余柠"});
         bufferedRecords.add((E) new Object[]{"002","小倩"});
         bufferedRecords.add((E) new Object[]{"003","宁采臣"});

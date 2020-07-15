@@ -19,8 +19,8 @@ public class HttpSchemaFactory implements SchemaFactory {
         Preconditions.checkArgument(operand.get("tables") != null,
                 "tables must be specified");
         //从json里取出tables参数
-        @SuppressWarnings("unchecked") List<Map<String, Object>> tables =
-                (List) operand.get("tables");
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> tables = (List) operand.get("tables");
         //将所有的http接口（表）的参数传递给下一层
         return new HttpSchema(tables);
     }

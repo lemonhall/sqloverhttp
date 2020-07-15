@@ -12,14 +12,14 @@
           "name": "TT",
           "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory",
           "operand": {
-            "url": "http://www.baidu.com"
+            "url": "http://172.18.161.113:8888/"
           }
         },
         {
           "name": "csv_02",
           "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory",
           "operand": {
-            "url": "http://www.baidu.com"
+            "url": "http://172.18.161.113:8888/"
           }
         }
       ]

@@ -2,7 +2,6 @@ package com.lsl.sqloverhttp.adapter.http;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import org.apache.calcite.model.JsonCustomTable;
@@ -20,6 +19,8 @@ public class HttpSchema extends AbstractSchema {
     private Map<String, Table> tableMap;
     //这部分都是直接从redis的Adapter抄过来的
     public final List<Map<String, Object>> tables;
+
+
     public HttpSchema(List<Map<String, Object>> tables) {
         this.tables = tables;
     }
@@ -49,7 +50,8 @@ public class HttpSchema extends AbstractSchema {
     }
 
     //实际上就要开始在这里搞事情了呢；
-    private Table table(String tableName) {
-        return new HttpTable();
+    private HttpTable table(String tableName) {
+        //抄redis那边
+        return null;
     }
 }

@@ -16,6 +16,6 @@ public class HttpTableFactory implements TableFactory {
         String url = operand.get("url") == null ? null
                 : operand.get("url").toString();
         System.out.println("tableName ==>"+tableName+"\nurl => "+url);
-        return new HttpTable();
+        return HttpTable.create(tableName,url);
     }
 }
