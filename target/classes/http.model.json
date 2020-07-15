@@ -10,11 +10,17 @@
       "tables": [
         {
           "name": "TT",
-          "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory"
+          "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory",
+          "operand": {
+            "url": "http://www.baidu.com"
+          }
         },
         {
           "name": "csv_02",
-          "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory"
+          "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory",
+          "operand": {
+            "url": "http://www.baidu.com"
+          }
         }
       ]
     }
