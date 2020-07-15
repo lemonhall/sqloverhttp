@@ -6,7 +6,17 @@
       "name": "TEST",
       "type": "custom",
       "factory": "com.lsl.sqloverhttp.adapter.http.HttpSchemaFactory",
-      "operand": {}
+      "operand": {},
+      "tables": [
+        {
+          "name": "TT",
+          "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory"
+        },
+        {
+          "name": "csv_02",
+          "factory": "com.lsl.sqloverhttp.adapter.http.HttpTableFactory"
+        }
+      ]
     }
   ]
 }

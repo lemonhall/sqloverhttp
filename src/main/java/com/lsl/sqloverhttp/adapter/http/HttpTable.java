@@ -27,6 +27,7 @@ import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HttpTable extends AbstractTable implements ScannableTable {
+
     @Override
     public Enumerable<Object[]> scan(DataContext dataContext) {
         return new AbstractEnumerable<Object[]>() {
